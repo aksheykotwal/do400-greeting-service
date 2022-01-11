@@ -21,6 +21,17 @@ pipeline{
             }
         }
 
-        // Add the "Deploy" stage here
+       
+         stage("Deploy"){
+            steps{
+                sh '''
+                  oc project yxflty-greetings
+                  oc start-build greeting-service --follow --wait
+                '''
+            }
+        }
+    
+ 
+       
     }
 }
